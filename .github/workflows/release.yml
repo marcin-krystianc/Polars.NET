@@ -2,15 +2,6 @@ name: Build and Publish NuGet
 
 on:
   push:
-    tags:
-      - 'v*'
-    paths-ignore:
-      - '**.md'        
-      - 'LICENSE'      
-      - '.gitignore'    
-      - 'docs/**'     
-      - 'icon.png'      
-  workflow_dispatch:
 
 jobs:
   # ===================================================
