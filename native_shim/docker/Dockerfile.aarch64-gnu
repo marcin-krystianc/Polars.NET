@@ -4,6 +4,7 @@ RUN echo 'deb http://archive.debian.org/debian buster main' > /etc/apt/sources.l
     echo 'deb http://archive.debian.org/debian-security buster/updates main' >> /etc/apt/sources.list && \
     apt-get update -o Acquire::Check-Valid-Until=false && \
     apt-get install -y --no-install-recommends \
+        gcc g++ libc6-dev \
         gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross \
         make pkg-config && \
     rm -rf /var/lib/apt/lists/*
