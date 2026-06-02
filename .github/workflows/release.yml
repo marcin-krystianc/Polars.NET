@@ -28,7 +28,7 @@ jobs:
             target: x86_64-unknown-linux-gnu
             rid: linux-x64
             artifact_name: libnative_shim.so
-            use_cross: false
+            use_cross: true
             rustflags: "-C target-cpu=x86-64-v3"
 
           # --- Linux x64 Musl ---
