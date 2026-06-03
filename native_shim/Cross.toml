@@ -2,4 +2,4 @@
 dockerfile = "./docker/Dockerfile.x86_64-gnu"
 
 [target.aarch64-unknown-linux-gnu]
-dockerfile = "./docker/Dockerfile.aarch64-gnu"
+dockerfile = "ghcr.io/cross-rs/aarch64-unknown-linux-gnu:edge-manylinux2014"
