@@ -1,0 +1,14 @@
+FROM debian:buster
+
+RUN echo 'deb http://archive.debian.org/debian buster main' > /etc/apt/sources.list && \
+    echo 'deb http://archive.debian.org/debian-security buster/updates main' >> /etc/apt/sources.list && \
+    apt-get update -o Acquire::Check-Valid-Until=false && \
+    apt-get install -y --no-install-recommends \
+        gcc g++ libc6-dev \
+        gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross \
+        make pkg-config && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
+ENV CC_aarch64_unknown_linux_gnu=aarch64-linux-gnu-gcc
+ENV CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++

@@ -2,22 +2,13 @@ name: Build and Publish NuGet
 
 on:
   push:
-    tags:
-      - 'v*'
-    paths-ignore:
-      - '**.md'        
-      - 'LICENSE'      
-      - '.gitignore'    
-      - 'docs/**'     
-      - 'icon.png'      
-  workflow_dispatch:
 
 jobs:
   # ===================================================
   # The Matrix Build
   # ===================================================
   build-rust:
-    name: Build Rust (${{ matrix.os }})
+    name: Build Rust (${{ matrix.os }} - ${{ matrix.rid }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -28,7 +19,7 @@ jobs:
             target: x86_64-unknown-linux-gnu
             rid: linux-x64
             artifact_name: libnative_shim.so
-            use_cross: false
+            use_cross: true
             rustflags: "-C target-cpu=x86-64-v3"
 
           # --- Linux x64 Musl ---
@@ -206,6 +197,8 @@ jobs:
         include:
           - os: ubuntu-latest
             native_rid: linux-x64
+          - os: ubuntu-24.04-arm
+            native_rid: linux-arm64
           - os: windows-latest
             native_rid: win-x64
           - os: macos-14
