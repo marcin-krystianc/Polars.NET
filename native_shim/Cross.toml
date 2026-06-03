@@ -2,4 +2,4 @@
 dockerfile = "./docker/Dockerfile.x86_64-gnu"
 
 [target.aarch64-unknown-linux-gnu]
-image = "ghcr.io/cross-rs/aarch64-unknown-linux-gnu:edge-manylinux2014"
+image = "ghcr.io/cross-rs/aarch64-unknown-linux-gnu:main-centos"
